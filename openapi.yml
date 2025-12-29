@@ -1,0 +1,160 @@
+openapi: "3.0.3"
+info:
+  title: "User register API"
+  description: "This is a sample"
+  version: "1.0.0"
+
+servers:
+  - url: "http://localhost:3000"
+    description: "Local enviroment"
+  - url: "http://sample.com"
+    description: "Real enviroment"
+
+tags:
+  - name: "User"
+    description: "For operating user"
+  - name: "Book"
+    description: "For operating book"
+paths:
+  "/user/{id}":
+    get:
+      summary: "Get user information"
+      tags: ["User"]
+      deprecatd: false
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  "/register":
+    post:
+      summary: "Register new user"
+      tags: ["User"]
+      deprecatd: false
+      parameters:
+        - $ref: "#/components/parameters/UserFirstName"
+        - $ref: "#/components/parameters/UserLastName"
+        - $ref: "#/components/parameters/UserPassWord"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Registered"
+  "/books":
+    get:
+      summary: "Get the list of book that registered"
+      tags: ["Book"]
+      deprecatd: false
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Books"
+  "/books/favorite/{book_id}":
+    post:
+      summary: "Favorite the book"
+      tags: ["Book"]
+      deprecatd: false
+      parameters:
+        - $ref: "#/components/parameters/UserId"
+        - $ref: "#/components/parameters/BookId"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Favorite"
+  "/books/favorite/{user_id}":
+    post:
+      summary: "User favoirted book lists"
+      tags: ["Book"]
+      deprecatd: false
+      parameters:
+        - $ref: "#/components/parameters/UserId"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Favorites"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id: { type: integer, example: 1 }
+        first_name: { type: string, example: yamada }
+        last_name: { type: string, example: taro }
+        password_hash: { type: string, example: 086h263ojodnareawhorejoj }
+    Registered:
+      type: object
+      properties:
+        id: { type: integer, example: 1 }
+        first_name: { type: string, example: yamada }
+        last_name: { type: string, example: taro }
+        created_at: { type: string, example: 2024-01-01T00:00:00Z }
+    Books:
+      type: object
+      properties:
+        id: { type: integer, example: 1 }
+        title: { type: string, example: アオアシ }
+        author: { type: string, example: 小林有吾 }
+        publish_date:
+          { type: string, format: date-time, example: 2024-01-01T00:00:00Z }
+        price: { type: integer, example: 2000 }
+        publisher: { type: string, example: 講談社 }
+    Favorite:
+      type: object
+      properties:
+        user_id: { type: integer, example: 1 }
+        book_id: { type: integer, example: 1 }
+    Favorites:
+      type: object
+      properties:
+        user_id: { type: integer, example: 1 }
+        books:
+          type: array
+          items:
+            $ref: "#/components/schemas/Books"
+  parameters:
+    UserId:
+      name: id
+      in: path
+      required: true
+      schema: { type: integer }
+      example: 1
+    UserFirstName:
+      name: first_name
+      in: path
+      required: true
+      schema: { type: string }
+      example: "yamada"
+    UserLastName:
+      name: last_name
+      in: path
+      required: true
+      schema: { type: string }
+      example: "taro"
+    UserPassWord:
+      name: password
+      in: path
+      required: true
+      schema: { type: string }
+      example: "baniarteawta9809"
+    BookId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+      example: 1
