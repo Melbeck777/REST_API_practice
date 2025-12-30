@@ -18,6 +18,6 @@ API favariting book API
 
 - [x] Make a openapi.yml
 - [x] Make schema of database with mermaid
-- [ ] Make compose yaml for postgresql
-- [ ] Make image for initial data
-- [ ] Develope API:
+- [x] Make compose yaml for postgresql
+- [x] Make image for initial data
+- [ ] Develope API
