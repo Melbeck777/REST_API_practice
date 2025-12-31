@@ -1,8 +1,5 @@
--- DB作成
-CREATE DATABASE booksite;
 -- 作成したDBに接続
 \c booksite;
-SET timezone TO 'Asia/Tokyo';
 -- テーブル作成
 DROP TABLE IF EXISTS BOOK;
 CREATE TABLE BOOK (
