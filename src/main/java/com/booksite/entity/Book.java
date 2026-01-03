@@ -1,7 +1,10 @@
 package com.booksite.entity;
 
 import jakarta.persistence.*;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -9,9 +12,9 @@ import java.util.Date;
 public class Book {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_id_seq_gen")
     @SequenceGenerator(name = "book_id_seq_gen", sequenceName = "book_id_seq", allocationSize = 1)
-    private long id;
+    private Integer id;
 
     @Column(name = "title",nullable = false, length = 100)
     private String title;
@@ -23,25 +26,28 @@ public class Book {
     private Integer price;
 
     @Column(name = "publish_date",nullable = false, length = 100)
-    private Date publish_date;
+    private LocalDateTime publishDate;
 
     @Column(name = "publisher",nullable = false, length = 100)
     private String publisher;
 
-    public Book(long id, String title, String author, Integer price, Date publish_date, String publisher) {
+    public Book(){
+    }
+
+    public Book(Integer id, String title, String author, Integer price, LocalDateTime publishDate, String publisher) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.price = price;
-        this.publish_date = publish_date;
+        this.publishDate = publishDate;
         this.publisher = publisher;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -69,12 +75,12 @@ public class Book {
         this.price = price;
     }
 
-    public Date getPublish_date() {
-        return publish_date;
+    public LocalDateTime getPublishDate() {
+        return publishDate;
     }
 
-    public void setPublish_date(Date publish_date) {
-        this.publish_date = publish_date;
+    public void setPublishDate(LocalDateTime publishDate) {
+        this.publishDate = publishDate;
     }
 
     public String getPublisher() {

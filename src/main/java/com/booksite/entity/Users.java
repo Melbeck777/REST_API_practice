@@ -9,79 +9,83 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq_gen")
     @Column(name = "id")
-    private long id;
+    @SequenceGenerator(name = "users_id_seq_gen", sequenceName = "users_id_seq", allocationSize = 1)
+    private Integer id;
 
-    @Column(name = "first_name",nullable = false, length = 100)
-    private String first_name;
+    @Column(name = "first_name", nullable = false, length = 100)
+    private String firstName;
 
-    @Column(name = "last_name",nullable = false, length = 100)
-    private String last_name;
+    @Column(name = "last_name", nullable = false, length = 100)
+    private String lastName;
 
-    @Column(name = "password_bash",nullable = false)
-    private String password_bash ;
+    @Column(name = "password_bash", nullable = false)
+    private String passwordBash;
 
-    @Column(name = "created_at",nullable = false, length = 100)
-    private LocalDateTime created_at;
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
 
-    @Column(name = "updated_at",nullable = false, length = 100)
-    private LocalDateTime updated_at;
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
 
-    public Users(long id, String first_name, String last_name, String password_bash, LocalDateTime created_at, LocalDateTime updated_at) {
-        this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.password_bash = password_bash;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+    public Users() {
     }
 
-    public long getId() {
+    public Users(Integer id, String firstName, String lastName, String passwordBash, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passwordBash = passwordBash;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getPassword_bash() {
-        return password_bash;
+    public String getPasswordBash() {
+        return passwordBash;
     }
 
-    public void setPassword_bash(String password_bash) {
-        this.password_bash = password_bash;
+    public void setPasswordBash(String passwordBash) {
+        this.passwordBash = passwordBash;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdated_at() {
-        return updated_at;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdated_at(LocalDateTime updated_at) {
-        this.updated_at = updated_at;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

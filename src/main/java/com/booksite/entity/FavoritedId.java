@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class FavoritedId implements Serializable {
-    private Integer user_id;
-    private Integer book_id;
+    private Integer userId;
+    private Integer bookId;
 
-    public FavoritedId(Integer user_id, Integer book_id) {
-        this.user_id = user_id;
-        this.book_id = book_id;
+    public FavoritedId(Integer userId, Integer bookId) {
+        this.userId = userId;
+        this.bookId = bookId;
     }
 
 
@@ -17,11 +17,11 @@ public class FavoritedId implements Serializable {
     public boolean equals(Object o) {
         if(this == o) return true;
         if(!(o instanceof FavoritedId that)) return false;
-        return Objects.equals(user_id, that.user_id) && Objects.equals(book_id, that.book_id);
+        return Objects.equals(userId, that.userId) && Objects.equals(bookId, that.bookId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, book_id);
+        return Objects.hash(userId, bookId);
     }
 }

@@ -6,33 +6,37 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "favorite")
+@IdClass(FavoritedId.class)
 public class Favorite {
     @Id
     @Column(name = "user_id", nullable = false)
-    private Integer user_id;
+    private Integer userId;
 
     @Id
     @Column(name = "book_id", nullable = false)
-    private Integer book_id;
+    private Integer bookId;
 
-    public Favorite(Integer user_id, Integer book_id) {
-        this.user_id = user_id;
-        this.book_id = book_id;
+    public Favorite(){
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Favorite(Integer userId, Integer bookId) {
+        this.userId = userId;
+        this.bookId = bookId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public Integer getBook_id() {
-        return book_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public void setBook_id(Integer book_id) {
-        this.book_id = book_id;
+    public Integer getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
     }
 }
