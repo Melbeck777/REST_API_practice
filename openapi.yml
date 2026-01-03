@@ -28,7 +28,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
-  "/register":
+  "/user/register":
     post:
       summary: "Register new user"
       tags: ["User"]
