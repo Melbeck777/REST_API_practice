@@ -14,10 +14,15 @@ HTTP 200
 [Asserts]
 jsonpath "$.firstName" == "Osaka"
 jsonpath "$.lastName" == "Tomoe"
+jsonpath "$.userId" exists
+
+[Captures]
+my_user_id: jsonpath "$.userId"
 
 
-GET {{base_url}}/users/4
+GET {{base_url}}/users/{{my_user_id}}
 
 HTTP 200
 [Asserts]
 jsonpath "$.lastName" == "Tomoe"
+
