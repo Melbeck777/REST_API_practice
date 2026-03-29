@@ -16,22 +16,22 @@ public class Book {
     @SequenceGenerator(name = "book_id_seq_gen", sequenceName = "book_id_seq", allocationSize = 1)
     private Integer id;
 
-    @Column(name = "title",nullable = false, length = 100)
+    @Column(name = "title", nullable = false, length = 100)
     private String title;
 
-    @Column(name = "author",nullable = false, length = 100)
+    @Column(name = "author", nullable = false, length = 100)
     private String author;
 
-    @Column(name = "price",nullable = false)
+    @Column(name = "price", nullable = false)
     private Integer price;
 
-    @Column(name = "publish_date",nullable = false, length = 100)
+    @Column(name = "publish_date", nullable = false, length = 100)
     private LocalDateTime publishDate;
 
-    @Column(name = "publisher",nullable = false, length = 100)
+    @Column(name = "publisher", nullable = false, length = 100)
     private String publisher;
 
-    public Book(){
+    public Book() {
     }
 
     public Book(Integer id, String title, String author, Integer price, LocalDateTime publishDate, String publisher) {
